@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
+        <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
+        <title>Budget / Dashboard</title>
+        <link rel="stylesheet" href="../resources/index.css">
+    </head>
+    <body>
+        <div id="home-grid">
+
+            <nav>
+                <a><img src="../resources/images/dashboardIcon.png"></a>
+                <a><img src="../resources/images/profileIcon.png"></a>
+                <a><img src="../resources/images/categoryIcon.png"></a>
+            </nav>
+
+            <div class="header">
+                <div class="greeting">
+                    Welcome to the Temp Dashboard!
+                </div>
+                <div class="view">
+                    Monthly
+                </div>
+                <div class="view">
+                    Biweekly
+                </div>
+                <div class="view">
+                    Weekly
+                </div>
+            </div>
+
+
+            <main class="dashboard-content">
+
+                <div class="overview">
+                    <div class="income-display">
+                        <input id="getIncomeId" type="number" placeholder="UserID"><br>
+                        <button id="getIncomeBtn" type="button">Retrieve</button><br>
+                        <p id=" income"></p>
+                    </div>
+                    <div class="pie-chart">
+                        <p>Pie Chart</p>
+                    </div>
+                    <div class="legend-grid">
+                        <div class="legend" class="cat1">
+                            <p>Category 1</p>
+                        </div>
+                        <div class="legend" class="cat2">
+                            <p>Category 2</p>
+                        </div>
+                        <div class="legend" class="cat3">
+                            <p>Category 3</p>
+                        </div>
+                        <div class="legend" class="cat4">
+                            <p>Category 4</p>
+                        </div>
+                        <div class="legend" class="cat5">
+                            <p>Category 5</p>
+                        </div>
+                        <div class="legend" class="cat6">
+                            <p>Category 6</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-balances">
+                    <div class="card">
+                        <div class="card-container">
+                            <h4><b>Groceries</b></h4>
+                            <p id="main-cat-1"></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-container">
+                            <h4><b>Utilities</b></h4>
+                            <p id="main-cat-2"></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-container">
+                            <h4><b>Car</b></h4>
+                            <p id="main-cat-3"></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-container">
+                            <h4><b>Savings</b></h4>
+                            <p id="main-cat-4"></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-container">
+                            <h4><b>Rainy Day</b></h4>
+                            <p id="main-cat-5"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+            
+            
+            
+            <h1>Hello from Electron renderer!</h1>
+            <p id="info"></p>
+        
+        </div>
+
+        
+    </body>
+    <script src="../src/renderer.js"></script>
+</html>
