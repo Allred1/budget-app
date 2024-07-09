@@ -1,0 +1,41 @@
+/* *************************** */
+/* MAIN CONTENT FOR CATEGORIES */
+/* *************************** */
+.income {
+    font-size: 25px;
+    margin-left: 100px;
+}
+
+
+.category-content {
+    grid-column: 2;
+    padding: 5px;
+    margin-left: 50px;
+    margin-right: 100px;
+    border-style: solid;
+    border-color: black;
+}
+
+.spreadsheet-label, .row, .tax {
+    display: grid;
+    grid-template-columns: 10% 20% 15% 15% 10% 15% 10%;
+    grid-template-rows: 1;
+    grid-gap: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+.spreadsheet-label {
+    background-color: darkgray;
+}
+
+.tax {
+    border-style: solid;
+    border-color: black;
+    background-color: rgb(96, 165, 96);
+    color: white;
+}
+
+
+/* New rows will be added through Javascript "edit +add" functionality */
+/* Also, savings and expense might become one option with a drop down menu that gives the "savings" or "expense" option, disignated by color. */

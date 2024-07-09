@@ -1,0 +1,146 @@
+/* *********************** */
+/* MAIN GRID FOR ALL PAGES 
+        (2 columns: Menu & Content)
+        (2 rows: Header & then the content)*/
+/* *********************** */
+#home-grid {
+    display: grid;
+    grid-template-columns: 5% 94%;
+    grid-template-rows: auto auto;
+    grid-gap: 10px;
+    margin-top: 40px;
+}
+/* *********************** */
+/* NAVIGATION MENU SECTION */
+/* *********************** */
+nav {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: -10px;
+    padding: 10px;
+}
+/* ************** */
+/* HEADER SECTION */
+/* ************** */
+.header {
+    grid-column: 2;
+    grid-row: 1;
+    padding-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+.greeting {
+    font-size: 30px;
+    float: left;
+    padding: 0 425px 0 30px;
+    background-color: darkcyan;
+}
+.view {
+    background-color: rgb(169, 169, 169);
+    font-size: 20px;
+    float: right;
+    padding: 0 30px 0 30px;
+    margin-inline: 20px;
+    margin-top: 10px;
+}
+
+
+
+/* ************************** */
+/* MAIN CONTENT FOR DASHBOARD */
+/* ************************** */
+.dashboard-cnotent {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 1;
+    grid-auto-rows: minmax(20px, auto);
+    padding: 5px;
+    margin-top: -35px;
+}
+.dashboard-content > div {
+    font-size: 30px;
+}
+
+
+/* **************** */
+/* OVERVIEW SECTION */
+/* **************** */
+.overview {
+    grid-column: 1;
+    grid-row: 2;
+    border-width: medium;
+    border-style: solid;
+    border-color: darkgray;
+    display: flex;
+    height: 350px;
+    justify-content: space-evenly;
+}
+.incomeLabel {
+    font-size: 20px;
+}
+.income-display {
+    float: left;
+    background-color: darkgray;
+    width: 300px;
+    height: 75px;
+    margin: 125px 0 100px 0;
+    border-style: solid;
+    border-width: medium;
+    border-color: darkgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pie-chart {
+    background-color: darkgray;
+    margin: 100px 0 100px 0;
+    border-radius: 200px;
+}
+.legend-grid {
+    float: right;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 300px;
+    row-gap: 10px;
+    column-gap: 30px;
+    padding: 5px;
+    margin: 20px 50px 20px 50px;
+    font-size: 20px;
+    text-align: center;
+}
+.legend {
+    padding:0 5 px 0 5px;
+}
+.cat1 { grid-column: 1; grid-row: 1}
+.cat2 { grid-column: 1; grid-row: 2}
+.cat3 { grid-column: 1; grid-row: 3}
+.cat4 { grid-column: 2; grid-row: 1}
+.cat5 { grid-column: 2; grid-row: 2}
+.cat6 { grid-column: 2; grid-row: 3}
+
+
+/* ********************* */
+/* MAIN BALANCES SECTION */
+/* ********************* */
+.main-balances {
+    grid-column: 1;
+    grid-row: 3;
+    padding: 20px;
+    margin: 40px 0 40px 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+.card {
+    box-shadow: - 4px 8px 0 rbga(0, 0, 0, 0.2);
+    height: 175px;
+    width: 200px;
+    display: inline-block;
+    margin-inline: 20px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: medium;
+    border-color: darkgray;
+}

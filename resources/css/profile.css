@@ -1,0 +1,48 @@
+/* ************************ */
+/* MAIN CONTENT FOR PROFILE */
+/* ************************ */
+.profile-content {
+    grid-column: 2;
+    padding: 5px;
+    margin-top: -10px;
+    margin-left: 5px;
+}
+
+/* Profile form */
+.profile-form {
+    padding: 30px 10px 50px 10px;
+    background-color: rgb(169, 169, 169);
+    width: 30%;
+    margin-left: 25px;
+}
+.profile-form h4 {
+    font-size: 20px;
+    margin-top: -10px;
+}
+
+.profile-output {
+    margin-left: 50px;
+}
+
+.profile-output > p {
+    padding: 5px;
+    border-style: solid;
+    border-color: black;
+    width: 70%;
+    margin-left: 15px;
+    margin-top: 2px;
+    
+}
+
+/* 
+.profile-form > div > p {
+    padding: 5px;
+    border-style: solid;
+    border-color: black;
+    width: 70%;
+    margin-inline: auto;
+} */
+/* .profile-form > div > label {
+    font-size: 15px;
+    padding: 5px;
+} */

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Category</title>
+        <link rel="stylesheet" href="./css/category.css">
+        <link rel="stylesheet" href="./css/dashboard.css">
+    </head>
+    <body>
+        <div id="home-grid">
+
+            <nav>
+                <a href="dashboard.html"><img src="../resources/images/dashboardIcon.png"></a>
+                <a href="category.html"><img src="../resources/images/categoryIcon.png"></a>
+                <a href="profile.html"><img src="../resources/images/profileIcon.png"></a>
+            </nav>
+
+            <div class="header">
+                <div class="greeting">
+                    Welcome to Categories!
+                </div>
+                <dvi class="income">
+                    Income: 
+                    <input id="income" type="number" placeholder="income">
+                </dvi>
+            </div>
+
+            <main class="category-content">
+                <div class="spreadsheet-label">
+                    <div>Category Id</div>
+                    <div>Name</div>
+                    <div>Amount</div>
+                    <div>Savings?</div>
+                    <div>Expense?</div>
+                    <div>User Id</div>
+                </div>
+
+                <div class="row">
+                    <input id="catId" type="number" placeholder="Category ID">
+                    <input id="catName" type="text" placeholder="Name">
+                    <input id="dollarAmount" type="text" placeholder="Amount">
+                    <input id="moneyIn" type="text" placeholder="Savings?">
+                    <input id="moneyOut" type="text" placeholder="Expense?">
+                    <input id="userIdFk" type="number" placeholder="User ID">
+
+                    <button id="createCategoryBtn" type="button">Create</button><br>
+                </div>
+
+                <!-- Tax Category -->
+                <div class="tax">
+                    <div class="taxId" id="taxId">3000</div>
+                    <div class="taxName" id="taxName">Tax</div>
+                    <div class="taxAmount" id="taxAmount">Amount</div>
+                    <div class="taxMoneyIn" id="taxMoneyIn">No Savings</div>
+                    <div class="taxMoneyOut" id="taxMoneyOut">Yes Expense</div>
+                    <div class="taxUserIdFk" id="taxUserIdFk">User Id</div>
+                </div>
+
+
+            </main>
+
+
+            <footer>
+            </footer>
+
+        </div>
+
+        <script src="..//src/category.js"></script>
+    </body>
+</html>
