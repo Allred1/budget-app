@@ -33,19 +33,3 @@ function findCategory() {
 // *****************************************************
 // *************EDIT FUNCTIONS*************
 // *****************************************************
-
-
-
-
-
-// *****************************************************
-// *************LOGIN FUNCTIONS*************
-// *****************************************************
-const loginBtn = document.getElementById('login-btn');
-loginBtn.addEventListener('click', submitLogin);
-
-function submitLogin() {
-    const userId = document.getElementById('userID').value;
-    const password = document.getElementById('password').value;
-    window.electronAPI.checkLogin(userId, password);
-};

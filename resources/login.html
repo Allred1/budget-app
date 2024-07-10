@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="document" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
+        <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
+        <title>Budget / Login</title>
+        <link rel="stylesheet" href="../resources/css/login.css">
+    </head>
+    <body>
+        <div id="login-content">
+
+            <div class="main-greeting">
+                <h1>Welcome to the Login!</h1>
+            </div>
+
+            <div class="login">
+                <input id="loginUserID" type="number" placeholder="User ID"><br>
+                <input id="password" type="password" placeholder="Password"><br>
+            </div>
+
+            <button id="login-btn" type="button">Login</button>
+            
+            <p id="loginValidation"></p>
+            <p>_________________________</p>
+
+            <button id="createAccount" type="button">Create Account</button>
+
+            <!-- Popup profile form -->
+            <div class="modal" id="accountModal">
+                <div class="modal-inner">
+                    <button id="closeModal">Close</button><br>
+                    <input id="profileId" type="number" placeholder="User ID"><br>
+                    <input id="firstName" type="text" placeholder="First Name"><br>
+                    <input id="lastName" type="text" placeholder="Last Name"><br>
+                    <input id="username" type="text" placeholder="Username"><br>
+                    <input id="profilePassword" type="password" placeholder="Password"><br>
+                    <button id="createProfileBtn" type="button">Create</button><br><br>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+    <script src="../src/login.js"></script>
+</html>

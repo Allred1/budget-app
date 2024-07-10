@@ -8,6 +8,7 @@ const dbOperation                       = require('../dbFiles/dbOperation')
 const createWindow = () => {
     // File paths
     const dashboardHtmlPath = path.resolve(__dirname, '../resources/dashboard.html');
+    const loginHtmlPath = path.resolve(__dirname, '../resources/login.html');
     const preloadScriptPath = path.join(__dirname, '../src/preload.js');
 
     // Main window constructor
@@ -22,7 +23,8 @@ const createWindow = () => {
         show: false,
     });
 
-    mainWindow.loadFile(dashboardHtmlPath);
+    // mainWindow.loadFile(dashboardHtmlPath);
+    mainWindow.loadFile(loginHtmlPath);
     // mainWindow.maximize();
     mainWindow.show();
 };
@@ -53,10 +55,6 @@ ipcMain.handle('set-category', async function setGoal(_event, value={catId, name
 // *************************************
 
 // calls getProfile from dbOperation
-// ipcMain.handle('get-profile', async function setGoal(_event, userId) {
-//     const result = await dbOperation.getProfile(userId);
-//     console.log(result.recordset[0]);
-// });
 ipcMain.handle('get-profile', 
     async function setGoal(_event, userId) {
         const result = await dbOperation.getProfile(userId);
@@ -98,13 +96,20 @@ ipcMain.handle('get-category', async function setGoal(_event, userId) {
 // *************************************
 // *******LOGIN HANDLERS*******
 // *************************************
-ipcMain.handle('check-login', async function setGoal(_event, value={userId, password}) {
-    const result = await dbOperation.findLogin(value);
-    if (result == 'valid') {
-        // need to send "valid" to renderer so renderer can trigger the link to the dashboard
+ipcMain.handle('check-login', 
+    async function setGoal(_event, value={userId, password}) {
+        const result = await dbOperation.findLogin(value);
+        console.log(result);
+        return result;
     }
-    console.log(result);
-});
+);
+// Somehow retain and send the UserId for all the other queries
+ipcMain.handle('send-userId', 
+    function setGoal(_event, userId) {
+        userId;
+
+    }
+);
 
 
 

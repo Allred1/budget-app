@@ -12,4 +12,5 @@ contextBridge.exposeInMainWorld('electronAPI', {
     retrieveCategory: (userId) => ipcRenderer.invoke('get-category', userId),
     // Login channel
     checkLogin: (userId, password) => ipcRenderer.invoke('check-login', [userId, password]),
+    sendLoginId: (userId) => ipcRenderer.invoke('send-userId', userId),
 });
