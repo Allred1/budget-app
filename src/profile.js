@@ -1,9 +1,9 @@
-// *****************************************************
-// *************CREATE FUNCTIONS*************
-// *****************************************************
+
+// // *****************************************************
+// // *************CREATE FUNCTIONS*************
+// // *****************************************************
 const createProfileBtn = document.getElementById('createProfileBtn');
 // createProfileBtn.addEventListener('click', submitProfile);
-
 function submitProfile() {
     const userId = document.getElementById('profileId').value;
     const fName = document.getElementById('firstName').value;
@@ -20,18 +20,25 @@ function submitProfile() {
 const getProfileBtn = document.getElementById('getProfileBtn');
 getProfileBtn.addEventListener('click', findProfile);
 
-// Display values
-const setId = document.getElementById('setId');
-const setFName = document.getElementById('setFName');
-const setLName = document.getElementById('setLName');
-const setUsername = document.getElementById('setUsername');
-const setPassword = document.getElementById('setPassword');
+
 
 // Retrieve the profile by ID
 async function findProfile() {
+    // Display values
+    const setId = document.getElementById('setId');
+    const setFName = document.getElementById('setFName');
+    const setLName = document.getElementById('setLName');
+    const setUsername = document.getElementById('setUsername');
+    const setPassword = document.getElementById('setPassword');
+    
+    const newId = await window.electronAPI.retrieveLogin();
+    window.electronAPI.seeIdTest(`New Id: ${newId}`);
+    
     const userId = document.getElementById('getProfileId').value;
-    const data = await window.electronAPI.retrieveProfile(userId);
-    setId.innerText = data.recordset[0].user_id;
+
+    const data = await window.electronAPI.retrieveProfile(newId);
+
+    setId.innerText = newId;
     setFName.innerText = data.recordset[0].first_name;
     setLName.innerText = data.recordset[0].last_name;
     setUsername.innerText = data.recordset[0].username;
@@ -39,6 +46,9 @@ async function findProfile() {
 };
 
 
+
 // *****************************************************
 // *************EDIT FUNCTIONS*************
 // *****************************************************
+
+

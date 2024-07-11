@@ -23,6 +23,14 @@ const createWindow = () => {
         show: false,
     });
 
+    // Receive the UserID from the Login, then send it to the Profile & Category renderers
+    ipcMain.handle('send-Main-userId', async(_event, userId) => {
+        // Send the userId (retrieved from the Login) to the Profile and Category processes
+        ipcMain.handle('sendIdToProfile', async() => {
+            return userId;
+        });
+    });
+
     // mainWindow.loadFile(dashboardHtmlPath);
     mainWindow.loadFile(loginHtmlPath);
     // mainWindow.maximize();
@@ -103,13 +111,45 @@ ipcMain.handle('check-login',
         return result;
     }
 );
-// Somehow retain and send the UserId for all the other queries
-ipcMain.handle('send-userId', 
-    function setGoal(_event, userId) {
-        userId;
 
-    }
-);
+// See results from Profile ID I'm trying to pass from Main to Profile
+ipcMain.on('see-id-test', (_event, value) => {
+    console.log(value);
+});
+// ipcMain.handle('see-id-test', 
+//     async function setGoal(_event, value) {
+//         console.log(value);
+//     }
+// );
+
+
+// Somehow retain and send the UserId for all the other queries
+// ipcMain.handle('send-userId', 
+//     function setGoal(_event, userId) {
+//         userId;
+
+//     }
+// );
+// ipcMain.on('send-Main-userId', (event, arg) => {
+//     mainWindow.webContents.send('send-Profile-userId', arg);
+// });
+// ipcMain.handle('send-Main-userId', 
+//     async function setGoal(_event, value) {
+//         console.log(value); // printed successfully
+//         electronAPI.sendIdToProfile(value);
+//     }
+// );
+// ipcMain.once('send-Main-userId', async (event, data) => {
+//     console.log(data);
+//     mainWindow.webContents.send('send-Profile-userId', arg);
+// });
+// ipcMain.handle('send-Main-userId', (event, arg) => {
+//     console.log(arg);
+//     mainWindow.webContents.send('send-Profile-userId', arg);
+// });
+// function sendDataToUI (data) {
+//     window.webContents.send('sendDataToUI', data);
+// };
 
 
 

@@ -7,13 +7,13 @@
         <link rel="stylesheet" href="./css/profile.css">
         <link rel="stylesheet" href="./css/dashboard.css">
     </head>
-    <body>
+    <body id="body">
         <div id="home-grid">
             
             <nav>
                 <a href="dashboard.html"><img src="../resources/images/dashboardIcon.png"></a>
+                <a id="profileLink" href="profile.html"><img src="../resources/images/profileIcon.png"></a>
                 <a href="category.html"><img src="../resources/images/categoryIcon.png"></a>
-                <a href="profile.html"><img src="../resources/images/profileIcon.png"></a>
                 <a href="login.html"><img src="../resources/images/logoutIcon.png"></a>
             </nav>
 
@@ -43,7 +43,7 @@
                         
 
                         <!-- Import the profile information into these elements-->
-                        <div class="profile-output">
+                        <div id="profile-output" class="profile-output">
                             <label>User Id: </label><p id="setId">user id</p>
                             <label>First Name: </label><p id="setFName">first name</p>
                             <label>Last Name: </label><p id="setLName">last name</p>

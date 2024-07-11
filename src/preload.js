@@ -1,5 +1,5 @@
 // Import modules
-const { contextBridge, ipcRenderer } = require('electron/renderer');
+const { contextBridge, ipcRenderer } = require('electron');
 
 
 contextBridge.exposeInMainWorld('electronAPI', {
@@ -12,5 +12,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
     retrieveCategory: (userId) => ipcRenderer.invoke('get-category', userId),
     // Login channel
     checkLogin: (userId, password) => ipcRenderer.invoke('check-login', [userId, password]),
-    sendLoginId: (userId) => ipcRenderer.invoke('send-userId', userId),
-});
+    sendIdToMain: (userId) => ipcRenderer.invoke('send-Main-userId', userId), 
+    // Pass the Login from the Main process to the Profile & Category processes
+    retrieveLogin: () => ipcRenderer.invoke('sendIdToProfile'),
+    // View contents in Main
+    seeIdTest: (id) => ipcRenderer.send('see-id-test', id),
+    }
+);

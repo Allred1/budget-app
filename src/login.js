@@ -15,10 +15,11 @@ async function submitLogin() {
     // else: an alert that says displays the error message
     if (result == 'valid') {
         loginValidation.innerText = '';
+        captureLoginId(userId);
         // changes the 'login' button to be a link to dashboard page
         loginBtn.addEventListener('click', window.location.href='dashboard.html');
         // sends "loginUserID to the Main process", there to be used for the remaining queries
-        captureLoginId(userId);
+        // captureLoginId(userId);
     }
     else {
         loginValidation.innerText = result;
@@ -26,7 +27,7 @@ async function submitLogin() {
 };
 
 function captureLoginId(userId) {
-    window.electronAPI.sendLoginId(userId);
+    window.electronAPI.sendIdToMain(userId);
 };
 
 
@@ -48,7 +49,10 @@ closeModal.addEventListener('click', () => {
 // button
 const createProfileBtn = document.getElementById('createProfileBtn');
 createProfileBtn.addEventListener('click', submitProfile);
-// createProfileBtn.addEventListener('click', window.location.href='dashboard.html');
+createProfileBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    window.location.href='dashboard.html';
+});
 
 
 function submitProfile() {
