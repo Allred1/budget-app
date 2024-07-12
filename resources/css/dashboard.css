@@ -77,9 +77,7 @@ nav {
     height: 350px;
     justify-content: space-evenly;
 }
-.incomeLabel {
-    font-size: 20px;
-}
+
 .income-display {
     float: left;
     background-color: darkgray;
@@ -93,6 +91,10 @@ nav {
     align-items: center;
     justify-content: center;
 }
+.incomeLabel {
+    font-size: 20px;
+}
+
 .pie-chart {
     background-color: darkgray;
     margin: 100px 0 100px 0;

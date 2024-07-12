@@ -1,9 +1,14 @@
 /* *************************** */
 /* MAIN CONTENT FOR CATEGORIES */
 /* *************************** */
-.income {
+.cat-income-label {
+    display: flex;
+    float: right;
+    width: 200px;
+    margin-right: 200px;
     font-size: 25px;
-    margin-left: 100px;
+    align-items: center;
+    justify-content: center;
 }
 
 

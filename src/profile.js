@@ -1,25 +1,12 @@
 
-// // *****************************************************
-// // *************CREATE FUNCTIONS*************
-// // *****************************************************
-const createProfileBtn = document.getElementById('createProfileBtn');
-// createProfileBtn.addEventListener('click', submitProfile);
-function submitProfile() {
-    const userId = document.getElementById('profileId').value;
-    const fName = document.getElementById('firstName').value;
-    const lName = document.getElementById('lastName').value;
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    window.electronAPI.setProfile(userId, fName, lName, username, password);
+// ***********************************************************
+// ************* DISPLAY THE PROFILE INFORMATION *************
+// ***********************************************************
+
+// Call the function on page load
+window.onload = function() {
+    findProfile();
 };
-
-
-// *****************************************************
-// *************GET FUNCTIONS*************
-// *****************************************************
-const getProfileBtn = document.getElementById('getProfileBtn');
-getProfileBtn.addEventListener('click', findProfile);
-
 
 
 // Retrieve the profile by ID
@@ -30,15 +17,17 @@ async function findProfile() {
     const setLName = document.getElementById('setLName');
     const setUsername = document.getElementById('setUsername');
     const setPassword = document.getElementById('setPassword');
-    
-    const newId = await window.electronAPI.retrieveLogin();
-    window.electronAPI.seeIdTest(`New Id: ${newId}`);
-    
-    const userId = document.getElementById('getProfileId').value;
 
-    const data = await window.electronAPI.retrieveProfile(newId);
+    // Get the ID from Main, which received it from Login
+    const userId = await window.electronAPI.renderersRetrieveLogin();
+    
+    // DEBUGGING: SEE WHAT'S BEING RECEIVED
+    // window.electronAPI.seeIdTest(`New Id: ${userId}`);
 
-    setId.innerText = newId;
+    // Ask the database for the account information via Preload -> Main -> dbOperation, and return it
+    const data = await window.electronAPI.retrieveProfile(userId);
+    // Populate the fields with the data from the database
+    setId.innerText = userId;
     setFName.innerText = data.recordset[0].first_name;
     setLName.innerText = data.recordset[0].last_name;
     setUsername.innerText = data.recordset[0].username;
@@ -47,8 +36,6 @@ async function findProfile() {
 
 
 
-// *****************************************************
-// *************EDIT FUNCTIONS*************
-// *****************************************************
-
-
+// **********************************************************
+// ************* UPDATE THE PROFILE INFORMATION *************
+// **********************************************************

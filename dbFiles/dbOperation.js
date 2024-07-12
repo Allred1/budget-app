@@ -60,7 +60,6 @@ const getCategory = async(userId) => {
     try {
         let pool = await sql.connect(config);
         let category = await pool.request().query(`SELECT * FROM category WHERE profile_id_fk = '${userId}'`);
-        // let category = await pool.request().query(`SELECT * FROM category WHERE category_id = '${userId}'`);
         return category;
     }
     catch(error) {
@@ -81,7 +80,6 @@ const getCategory = async(userId) => {
 const findLogin = async(login) => {
     try {
         let pool = await sql.connect(config);
-        // let newLogin = await pool.request().query(`SELECT * FROM profile WHERE user_id = '${login[0]}' AND password = '${login[1]}'`);
         let newLogin = await pool.request().query(`SELECT user_id, password FROM profile WHERE EXISTS (SELECT user_id, password WHERE user_id = '${login[0]}' AND password = '${login[1]}');`)
         // If the query returns a valid result, return "valid", otherwise return an "incorrect" message
         if (newLogin.recordset[0] == null) {

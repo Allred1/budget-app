@@ -27,9 +27,8 @@ input {
     padding: 5px;
 }
 
-#loginValidation {
+#incorrectLoginMessage {
     color: red;
-    /* padding: 5px; */
 }
 
 #login-btn {
