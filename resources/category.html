@@ -29,6 +29,8 @@
             </div>
 
             <main class="category-content">
+                
+                <!-- Spreadsheet Label -->
                 <div class="spreadsheet-label">
                     <div>Category Id</div>
                     <div>Name</div>
@@ -36,17 +38,7 @@
                     <div>Savings?</div>
                     <div>Expense?</div>
                     <div>User Id</div>
-                </div>
-
-                <div class="row">
-                    <input id="catId" type="number" placeholder="Category ID">
-                    <input id="catName" type="text" placeholder="Name">
-                    <input id="dollarAmount" type="text" placeholder="Amount">
-                    <input id="moneyIn" type="text" placeholder="Savings?">
-                    <input id="moneyOut" type="text" placeholder="Expense?">
-                    <input id="userIdFk" type="number" placeholder="User ID">
-
-                    <button id="createCategoryBtn" type="button">Create</button><br>
+                    <button id="editBtn" type="buttone">Edit</button>
                 </div>
 
                 <!-- Tax Category -->
@@ -58,6 +50,29 @@
                     <div class="taxMoneyOut" id="taxMoneyOut">Yes Expense</div>
                     <div class="taxUserIdFk" id="taxUserIdFk">User Id</div>
                 </div>
+
+                <div class="category-row">
+                    <p id="cat-id0"></p>
+                    <p id="cat-name0"></p>
+                    <p id="cat-amount0"></p>
+                    <p id="cat-moneyIn0"></p>
+                    <p id="cat-moneyOut0"></p>
+                    <p id="cat-fk0"></p>
+                </div>
+                
+                <!-- (IN PROGRESS) Element to add more category rows to from Javascript -->
+                <!-- <div id="category-row" class="category-row"></div> -->
+
+                <!-- Create New Category row -->
+                <form class="create-row hide">
+                    <input id="catId" type="number" placeholder="Category ID">
+                    <input id="catName" type="text" placeholder="Name">
+                    <input id="dollarAmount" type="text" placeholder="Amount">
+                    <input id="moneyIn" type="text" placeholder="Savings?">
+                    <input id="moneyOut" type="text" placeholder="Expense?">
+                    <input id="userIdFk" type="number" readonly>
+                    <button id="createCategoryBtn" type="button">Create</button><br>
+                </form>
 
 
             </main>

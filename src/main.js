@@ -26,6 +26,8 @@ const createWindow = () => {
     ipcMain.handle('send-Main-userId', async(_event, userId) => {
         // Send ID to the other Renderers (dashboard, profile, & category)
         ipcMain.handle('sendIdToRenderers', async() => { return userId; });
+            // Error when logging out and logging in with a new login: "Erro: Attempted to register a second handler for 'sendIdToRenderers'"
+            // Idea: when I log out, I not only need to navigate out of the previous page and to the login page, but I also need to wipe the original userId to a blank string. 
     });
     mainWindow.loadFile(loginHtmlPath);
     // mainWindow.maximize();
@@ -77,16 +79,13 @@ ipcMain.handle('get-income',
 );
 
 // calls getCategory from dbOperation
-ipcMain.handle('get-category', async function setGoal(_event, userId) {
-    const result = await dbOperation.getCategory(userId);
-    // console.log("ID: " + result.recordset[0].category_id);
-    // console.log("Name: " + result.recordset[0].category_name);
-    // console.log("Amount: " + result.recordset[0].dollar_amount);
-    // console.log("In?: " + result.recordset[0].money_id);
-    // console.log("Out?: " + result.recordset[0].money_out);
-    // console.log("Profile ID: " + result.recordset[0].profile_id_fk);
-    console.log(result.recordset);
-});
+ipcMain.handle('get-category', 
+    async function setGoal(_event, userId) {
+        const result = await dbOperation.getCategory(userId);
+        console.log(result.recordset);
+        return result;
+    }
+);
 
 
 
@@ -115,9 +114,9 @@ ipcMain.handle('check-login',
 
 // DEBUGGING HANLDER: SEE WHAT THE RENDERERS ARE RECEIVING (in trying to send the LoginID to them)
 // See results from Profile ID I'm trying to pass from Main to Profile
-// ipcMain.on('see-id-test', (_event, value) => {
-//     console.log(value);
-// });
+ipcMain.on('see-id-test', (_event, value) => {
+    console.log(value);
+});
 
 
 

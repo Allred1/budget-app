@@ -94,6 +94,9 @@ nav {
 .incomeLabel {
     font-size: 20px;
 }
+#income {
+    font-size: 23px;
+}
 
 .pie-chart {
     background-color: darkgray;
@@ -146,15 +149,24 @@ nav {
     border-width: medium;
     border-color: darkgray;
 }
+.card-container {
+    font-size: 20px;
+}
 
 
 
 /* ON SCREEN SIZE CHANGES */
 @media (max-width: 900px) {
+    /* The 'greetings' on the Dashboard, Profile, & Category pages */
     .greeting {
         margin-inline: 30px;
     }
+    /* Dashboard page */
     .dashboard-content {
         margin-inline: 30px;
+    }
+    /* Category page */
+    .spreadsheet-label, .create-row {
+        margin-right: 25px;
     }
 }

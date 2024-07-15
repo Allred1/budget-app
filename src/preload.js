@@ -22,6 +22,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
     renderersRetrieveLogin: () => ipcRenderer.invoke('sendIdToRenderers'),
     
     // DEBUGGING: SEE CONTENTS BEING SENT FROM MAIN TO RENDERER, IN MAIN THROUGH CONSOLE.LOG
-    // seeIdTest: (id) => ipcRenderer.send('see-id-test', id),
+    seeIdTest: (id) => ipcRenderer.send('see-id-test', id),
     }
 );

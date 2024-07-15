@@ -21,7 +21,7 @@
     border-color: black;
 }
 
-.spreadsheet-label, .row, .tax {
+.spreadsheet-label, .create-row, .tax, .category-row {
     display: grid;
     grid-template-columns: 10% 20% 15% 15% 10% 15% 10%;
     grid-template-rows: 1;
@@ -33,12 +33,25 @@
 .spreadsheet-label {
     background-color: darkgray;
 }
+#editBtn {
+    grid-column: 7;
+}
+
 
 .tax {
     border-style: solid;
     border-color: black;
     background-color: rgb(96, 165, 96);
     color: white;
+}
+
+.category-row {
+    border-style: solid;
+    border-color: black;
+}
+
+.hide {
+    display: none;
 }
 
 

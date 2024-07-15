@@ -1,7 +1,7 @@
 
-// ***********************************************************
-// ************* DISPLAY THE PROFILE INFORMATION *************
-// ***********************************************************
+// ****************************************
+// ************* PROFILE PAGE *************
+// ****************************************
 
 // Call the function on page load
 window.onload = function() {
@@ -11,7 +11,9 @@ window.onload = function() {
 
 
 
-// PROFILE DISPLAY 
+// ************************************************************
+// ************* RETRIEVE THE PROFILE INFORMATION *************
+// ************************************************************
 // Retrieve the profile by ID
 async function findProfile() {
     // Display values
