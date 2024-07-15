@@ -40,8 +40,9 @@ input {
     padding: 5px;
 }
 
+
 /* create account button */
-#createAccount {
+#createAccount, #createProfileBtn {
     border: none;
     border-radius: 10px;
     background-color: darkcyan;
@@ -81,4 +82,20 @@ button:hover {
     padding: 15px 25px;
     text-align: center;
     width: 380;
+    height: 250px;
+}
+
+/* close modal button */
+#closeModal {
+    float: right;
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+    padding: 10px;
+    color: red;
+    font-size: 20px;
+}
+#closeModal:hover {
+    color: rgb(0, 0, 0, 0.2);
+    cursor: pointer;
 }

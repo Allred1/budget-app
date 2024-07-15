@@ -11,6 +11,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
     retrieveProfile: (userId) => ipcRenderer.invoke('get-profile', userId),
     retrieveIncome: (userId) => ipcRenderer.invoke('get-income', userId),
     retrieveCategory: (userId) => ipcRenderer.invoke('get-category', userId),
+
+    // Update channels
+    setNewProfile: (userId, fName, lName, username, password) => ipcRenderer.invoke('set-new-profile', [userId, fName, lName, username, password]),
     
     // Login channel
     verifyLogin: (userId, password) => ipcRenderer.invoke('check-login', [userId, password]),

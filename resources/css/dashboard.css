@@ -146,3 +146,15 @@ nav {
     border-width: medium;
     border-color: darkgray;
 }
+
+
+
+/* ON SCREEN SIZE CHANGES */
+@media (max-width: 900px) {
+    .greeting {
+        margin-inline: 30px;
+    }
+    .dashboard-content {
+        margin-inline: 30px;
+    }
+}

@@ -90,14 +90,20 @@ ipcMain.handle('get-category', async function setGoal(_event, userId) {
 
 
 
-// *************************************
-// *******UPDATE (EDIT) HANDLERS*******
-// *************************************
+// **************************************
+// ******* UPDATE (EDIT) HANDLERS *******
+// **************************************
+// calls updateProfile function interacting with the database
+ipcMain.handle('set-new-profile', 
+    async function setGoal(_event, value={userId, fName, lName, username, password}) {
+        dbOperation.updateProfile(value);
+    }
+);
 
 
 
 // *************************************
-// *******LOGIN HANDLERS*******
+// ******* LOGIN HANDLERS *******
 // *************************************
 // Checks if the ID & Password the user submitted exists in the database, then returns the result to Login
 ipcMain.handle('check-login', 

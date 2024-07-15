@@ -25,22 +25,37 @@
 
             <main class="profile-content">
 
-                <div class="profile-display">
+                <section class="profile-box">
 
-                    <form class="profile-form">
-                        <h4>Your Profile</h4>
-                        <!-- Import the profile information into these elements-->
-                        <div id="profile-output" class="profile-output">
-                            <label>User Id: </label><p id="setId">user id</p>
-                            <label>First Name: </label><p id="setFName">first name</p>
-                            <label>Last Name: </label><p id="setLName">last name</p>
-                            <label>Username: </label><p id="setUsername">username</p>
-                            <label>Password: </label><p id="setPassword">password</p>
-                        </div>
-                        
+                    <h4>Your Profile</h4>
+
+                    <!-- Import the profile information into these elements-->
+                    <div class="profile-display">
+                        <label>User Id: </label><p id="setId">user id</p>
+                        <label>First Name: </label><p id="setFName">first name</p>
+                        <label>Last Name: </label><p id="setLName">last name</p>
+                        <label>Username: </label><p id="setUsername">username</p>
+                        <label>Password: </label><p id="setPassword">password</p>
+                        <button class="upate-btn" id="updateProfileBtn" type="button">Update</button>
+                    </div>
+
+                    <!-- Profile Form, which is hidden until the user clicks "update" button, then the profile-display is hidden -->
+                    <form class="profile-edit hide">
+                        <label for="editId">User Id: </label>
+                        <input type="number" id="editId" name="editId" placeholder="id..."><br><br>
+                        <label for="editFName">First Name: </label>
+                        <input type="text" id="editFName" name="editFName" placeholder="first name..."><br><br>
+                        <label for="editLName">Last Name: </label>
+                        <input type="text" id="editLName" name="editLName" placeholder="last name..."><br><br>
+                        <label for="editUsername">Username: </label>
+                        <input type="text" id="editUsername" name="editUsername" placeholder="username..."><br><br>
+                        <label for="editPassword">Password: </label>
+                        <input type="text" id="editPassword" name="editPassword" placeholder="password..."><br><br>
+                        <button class="save-btn" id="saveProfileBtn" type="button">Save</button>
                     </form>
+                    
+                </section>
 
-                </div>
 
             </main>
 

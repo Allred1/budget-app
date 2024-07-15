@@ -71,7 +71,17 @@ const getCategory = async(userId) => {
 // ************************************************************
 // 'EDIT' FUNCTIONS
 // ************************************************************
-
+const updateProfile = async(profile) => {
+    try {
+        let pool = await sql.connect(config);
+        let newProfile = await pool.request().query(`UPDATE profile SET user_id = ${profile[0]}, first_name = '${profile[1]}', last_name = '${profile[2]}', username = '${profile[3]}', password = '${profile[4]}' WHERE user_id = '${profile[0]}'`);
+        console.log('Profile updated.');
+        return newProfile;
+    }
+    catch(error) {
+        console.log(error);
+    };
+};
 
 
 // ************************************************************
@@ -104,6 +114,8 @@ module.exports = {
     getProfile,
     getIncome,
     getCategory,
+
+    updateProfile,
 
     findLogin,
 };
