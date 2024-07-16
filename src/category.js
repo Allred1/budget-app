@@ -26,6 +26,7 @@ async function findIncome() {
     document.getElementById('userIdFk').value = userId;
 };
 
+
 // *************************************************
 // ************* DISPLAY EACH CATEGORY *************
 // *************************************************
@@ -37,68 +38,73 @@ async function findCategory() {
     const data = await window.electronAPI.retrieveCategory(userId);
 
     // Get the number of categories this user has
-    // const numberOfCategories = data.recordset.length;
+    const numberOfCategories = data.recordset.length;
+    let i = 0; // Use an iterator
+
+    // Go over each category the user has
+    while (i < numberOfCategories) {
+        // Iterate over and (call the functions for) each category 
+        for (i; i < numberOfCategories; i++) {
+            // Get the rows section of the HTML
+            const rowSection = document.querySelector('#row-section');
+            // Create a new <div> (with an ID) to add to the row section
+            const rowDiv = document.createElement('div');
+            rowDiv.id = 'cat-row' + i.toString();    // add ID
+            rowDiv.className = 'row';                // add Class (for css)
+            rowSection.appendChild(rowDiv);
+            // Add each paragraph element to the <div> row element
+            addColumnsToRow(rowDiv, i);
+            // Call the functions to display in each column
+            catId('cat-id' + i.toString(), i);
+            name('cat-name' + i.toString(), i);
+            amount('cat-amount' + i.toString(), i);
+            moneyIn('cat-moneyIn' + i.toString(), i);
+            moneyOut('cat-moneyOut' + i.toString(), i);
+            foreignKey('cat-fk' + i.toString(), i);
+            updateBtnTitle('.updateButtons');
+            deleteBtnTitle('.deleteButtons');
+        };
+    };
+
+
+    // Thought: I might want to add the update and delete buttons here, but give them a class that hides them.
+    // Then in the UPDATE and DELETE portion of this file, all that needs to be done when the "edit" button is clicked is to remove that hiding class, and send the command to the database. 
     
-    // while (numberOfCategories > 0) {
-    //     // Iterate over and (call the functions for) each category 
-    //     for (let i = 0; i < data.recordset; i++) {
-    //         catId('cat-id' + i.toString(), i);
-    //         name('cat-name' + i.toString(), i);
-    //         amount('cat-amount' + i.toString(), i);
-    //         moneyIn('cat-moneyIn' + i.toString(), i);
-    //         moneyOut('cat-moneyOut' + i.toString(), i);
-    //         foreignKey('cat-fk' + i.toString(), i);
-    //         // const rowElements = document.querySelector('#category-row');
-    //         // addRowElement(rowElements, i);
-    //     };
-    // };
-    
-    // // Creates a new HTML row element
-    // function addRowElement(rowElements, i) {
-    //     const rowId = document.createElement('p');
-    //     const rowName = document.createElement('p');
-    //     const rowAmount = document.createElement('p');
-    //     const rowMoneyIn = document.createElement('p');
-    //     const rowMoneyOut = document.createElement('p');
-    //     const rowForeignKey = document.createElement('p');
-    //     rowId.id = 'cat-id' + i.toString();
-    //     rowName.id= 'cat-name' + i.toString();
-    //     rowAmount.id= 'cat-amount' + i.toString();
-    //     rowMoneyIn.id= 'cat-moneyIn' + i.toString();
-    //     rowMoneyOut.id= 'cat-moneyOut' + i.toString();
-    //     rowForeignKey.id= 'cat-fk' + i.toString();
-    //     rowElements.appendChild(rowId);
-    //     rowElements.appendChild(rowName);
-    //     rowElements.appendChild(rowAmount);
-    //     rowElements.appendChild(rowMoneyIn);
-    //     rowElements.appendChild(rowMoneyOut);
-    //     rowElements.appendChild(rowForeignKey);
-    // };
+    // Creates a new HTML row element
+    function addColumnsToRow(rowDiv, i) {
+        // Creates a paragraph element for each attribute in the row
+        const rowId = document.createElement('p');
+        const rowName = document.createElement('p');
+        const rowAmount = document.createElement('p');
+        const rowMoneyIn = document.createElement('p');
+        const rowMoneyOut = document.createElement('p');
+        const rowForeignKey = document.createElement('p');
+        // Creates button elements
+        const updateBtn = document.createElement('button');
+        const deleteBtn = document.createElement('button');
+        // Assigns an id to each paragraph
+        rowId.id= 'cat-id' + i.toString();
+        rowName.id= 'cat-name' + i.toString();
+        rowAmount.id= 'cat-amount' + i.toString();
+        rowMoneyIn.id= 'cat-moneyIn' + i.toString();
+        rowMoneyOut.id= 'cat-moneyOut' + i.toString();
+        rowForeignKey.id= 'cat-fk' + i.toString();
+        // Assigns classes to the editing buttons
+        updateBtn.classList.add('updateButtons');
+        deleteBtn.classList.add('updateButtons');
+        updateBtn.classList.add('hide');
+        deleteBtn.classList.add('hide');
+        // Adds them all to the row element
+        rowDiv.appendChild(rowId);
+        rowDiv.appendChild(rowName);
+        rowDiv.appendChild(rowAmount);
+        rowDiv.appendChild(rowMoneyIn);
+        rowDiv.appendChild(rowMoneyOut);
+        rowDiv.appendChild(rowForeignKey);
+        rowDiv.appendChild(updateBtn);
+        rowDiv.appendChild(deleteBtn);
+    };
 
-
-    catId('cat-id0', 0);
-    // catId('cat-id2', 1);
-    // catId('cat-id3', 2);
-    // catId('cat-id4', 3);
-    // catId('cat-id5', 4);
-
-    name('cat-name0', 0);    amount('cat-amount0', 0);
-    // name('cat-name1', 1);    amount('cat-amount1', 1);
-    // name('cat-name2', 2);    amount('cat-amount2', 2);
-    // name('cat-name3', 3);    amount('cat-amount3', 3);
-    // name('cat-name4', 4);    amount('cat-amount4', 4);;
-
-    moneyIn('cat-moneyIn0', 0);     moneyOut('cat-moneyOut0', 0);
-    // moneyIn('cat-moneyIn1', 1);     moneyOut('cat-moneyOut1', 1);
-    // moneyIn('cat-moneyIn2', 2);     moneyOut('cat-moneyOut2', 2);
-    // moneyIn('cat-moneyIn3', 3);     moneyOut('cat-moneyOut3', 3);
-    // moneyIn('cat-moneyIn4', 4);     moneyOut('cat-moneyOut4', 4);
-
-    foreignKey('cat-fk0', 0);
-    // foreignKey('cat-fk1', 1);
-    // foreignKey('cat-fk2', 2);
-    // foreignKey('cat-fk3', 3);
-    // foreignKey('cat-fk4', 4);
 
     // Populate each category with its proper name, amount, and money_in / money_out status
     async function catId(id, number) {
@@ -117,16 +123,21 @@ async function findCategory() {
         document.getElementById(id).innerText = data.recordset[number].money_out;
     };
     async function foreignKey(id, number) {
-        document.getElementById(id).innerText = "''";
+        document.getElementById(id).innerText = data.recordset[number].profile_id_fk;
     };
-
-
-    // Notes to self: I may need a (or some) other function(s) for a dynamic interface. When the user creates a new category, I need to count how many categories they have, and use that number to iterate over that many recordsets (recordset[3], etc.), and call each of those data-populating functions for each number. (Will also require the altering of the id string (concatenating + 1, etc.)). 
-    // I was going to add the need to manually add another HTML row element for each new category created, but I think the looping-over will take care of that once the page is refreshed. 
+    async function updateBtnTitle(id) {
+        const buttons = document.querySelectorAll(id);
+        buttons.forEach(btn => {
+            btn.innerText = 'Update';
+        });
+    };
+    async function deleteBtnTitle(id) {
+        const buttons = document.querySelectorAll(id);
+        buttons.forEach(btn => {
+            btn.innerText = 'Delete';
+        });
+    };
 };
-
-
-
 
 
 
@@ -144,10 +155,12 @@ async function findCategory() {
 let toggle = false;
 
 const editBtn = document.getElementById('editBtn');
-editBtn.addEventListener('click', function() {
+editBtn.addEventListener('click', (event) => {
     if (toggle == false) {
         // When clicked, open the editing modal
         showCreateCategory();
+        // Show the row editing ability
+        showRowEdits();
         toggle = true;
     } else {
         // When clicked again, 
@@ -155,6 +168,8 @@ editBtn.addEventListener('click', function() {
         const section = document.querySelector('.category-content');
         const edit = section.querySelector('.create-row');
         edit.classList.add('hide');
+        // Hide the row editing ability
+        hideRowEdits();
         toggle = false;
     };
 });
@@ -196,12 +211,53 @@ async function submitCategory(edit) {
 };
 
 
+
+
+// *****************************************************************
+// ************* REVEAL / HIDE THE ROW EDITING BUTTONS *************
+// *****************************************************************
+
+
+// Show the update and delete buttons for each category
+async function showRowEdits() {
+    // Get section HTML element to obtain the buttons
+    const section = document.querySelector('.category-row');
+    // Get all the update and delete buttons
+    const updateBtns = section.querySelectorAll('.updateButtons');
+    const deleteBtns = section.querySelectorAll('.deleteButtons');
+    // Remove the hide class from all the buttons
+    updateBtns.forEach(btn => {
+        btn.classList.remove('hide');
+    });
+    deleteBtns.forEach(btn => {
+        btn.classList.remove('hide');
+    });
+};
+// Hide again the update and delete buttons for each category
+async function hideRowEdits() {
+    // Get section HTML element to obtain the buttons
+    const section = document.querySelector('.category-row');
+    // Get all the update and delete buttons
+    const updateBtns = section.querySelectorAll('.updateButtons');
+    const deleteBtns = section.querySelectorAll('.deleteButtons');
+    // Add back the hide class to all the buttons
+    updateBtns.forEach(btn => {
+        btn.classList.add('hide');
+    });
+    deleteBtns.forEach(btn => {
+        btn.classList.add('hide');
+    });
+};
+
+
 // *********************************************
 // ************* UPDATE A CATEGORY *************
 // *********************************************
 
 
-
 // *********************************************
 // ************* DELETE A CATEGORY *************
 // *********************************************
+
+
+// Thoughts: I'm probably going to need to loop through each button and add an eventlistener. 
