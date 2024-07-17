@@ -17,6 +17,7 @@
     "express": "^4.19.2",
     "jquery": "^3.7.1",
     "msnodesqlv8": "^4.2.1",
-    "mssql": "^11.0.0"
+    "mssql": "^11.0.0",
+    "plotly.js-dist": "^2.33.0"
   }
 }

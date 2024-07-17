@@ -94,8 +94,18 @@ ipcMain.handle('get-category',
 // **************************************
 // calls updateProfile function interacting with the database
 ipcMain.handle('set-new-profile', 
-    async function setGoal(_event, value={userId, fName, lName, username, password}) {
+    async function setGoal(_event, value={userId, fName, lName, username, password, income}) {
         dbOperation.updateProfile(value);
+    }
+);
+
+
+// **************************************
+// ********** DELETE HANDLERS ***********
+// **************************************
+ipcMain.handle('remove-category', 
+    async function setGoal(_event, value) {
+        dbOperation.deleteCategory(value);
     }
 );
 

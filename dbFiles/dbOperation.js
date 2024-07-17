@@ -74,7 +74,7 @@ const getCategory = async(userId) => {
 const updateProfile = async(profile) => {
     try {
         let pool = await sql.connect(config);
-        let newProfile = await pool.request().query(`UPDATE profile SET user_id = ${profile[0]}, first_name = '${profile[1]}', last_name = '${profile[2]}', username = '${profile[3]}', password = '${profile[4]}' WHERE user_id = '${profile[0]}'`);
+        let newProfile = await pool.request().query(`UPDATE profile SET user_id = ${profile[0]}, first_name = '${profile[1]}', last_name = '${profile[2]}', username = '${profile[3]}', password = '${profile[4]}', income = '${profile[5]}' WHERE user_id = '${profile[0]}'`);
         console.log('Profile updated.');
         return newProfile;
     }
@@ -82,6 +82,25 @@ const updateProfile = async(profile) => {
         console.log(error);
     };
 };
+
+
+
+// ************************************************************
+// 'DELETE' FUNCTIONS
+// ************************************************************
+// delete category from the database
+const deleteCategory = async(categoryId) => {
+    try {
+        let pool = await sql.connect(config);
+        await pool.request().query(`DELETE FROM category WHERE category_id = ${categoryId}`);
+        console.log(`${categoryId} Category deleted.`);
+    }
+    catch(error) {
+        console.log(error);
+    };
+};
+
+
 
 
 // ************************************************************
@@ -116,6 +135,8 @@ module.exports = {
     getCategory,
 
     updateProfile,
+
+    deleteCategory,
 
     findLogin,
 };

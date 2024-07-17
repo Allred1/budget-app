@@ -13,7 +13,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
     retrieveCategory: (userId) => ipcRenderer.invoke('get-category', userId),
 
     // Update channels
-    setNewProfile: (userId, fName, lName, username, password) => ipcRenderer.invoke('set-new-profile', [userId, fName, lName, username, password]),
+    setNewProfile: (userId, fName, lName, username, password, income) => ipcRenderer.invoke('set-new-profile', [userId, fName, lName, username, password, income]),
+    
+    // Delete channels
+    removeCategory: (categoryId) => ipcRenderer.invoke('remove-category', categoryId),
     
     // Login channel
     verifyLogin: (userId, password) => ipcRenderer.invoke('check-login', [userId, password]),

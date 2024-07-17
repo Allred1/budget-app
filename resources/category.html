@@ -43,27 +43,29 @@
 
                 <!-- Tax Category -->
                 <div class="tax">
-                    <div class="taxId" id="taxId">3000</div>
-                    <div class="taxName" id="taxName">Tax</div>
-                    <div class="taxAmount" id="taxAmount">Amount</div>
-                    <div class="taxMoneyIn" id="taxMoneyIn">No Savings</div>
-                    <div class="taxMoneyOut" id="taxMoneyOut">Yes Expense</div>
-                    <div class="taxUserIdFk" id="taxUserIdFk">User Id</div>
+                    <div class="taxId" id="taxId"></div>
+                    <div class="taxName" id="taxName"></div>
+                    <div class="taxAmount" id="taxAmount"></div>
+                    <div class="taxMoneyIn" id="taxMoneyIn"></div>
+                    <div class="taxMoneyOut" id="taxMoneyOut"></div>
+                    <div class="taxUserIdFk" id="taxUserIdFk"></div>
                 </div>
-
-                <!-- <div class="category-row">
-                    <p id="cat-id0"></p>
-                    <p id="cat-name0"></p>
-                    <p id="cat-amount0"></p>
-                    <p id="cat-moneyIn0"></p>
-                    <p id="cat-moneyOut0"></p>
-                    <p id="cat-fk0"></p>
-                </div> -->
                 
-                <!-- (IN PROGRESS) Element to add more category rows to from Javascript -->
+                <!-- Element to add more category rows using Javascript -->
                 <section id="row-section" class="category-row"></section>
 
-                <!-- Create New Category row -->
+                <!-- Update form, which is hidden until the user clicks "update" -->
+                <!-- <form class="update-row hide">
+                    <input id="catEditId" type="number" placeholder="category id...">
+                    <input id="catEditName" type="text" placeholder="name...">
+                    <input id="editDollarAmount" type="text" placeholder="amount...">
+                    <input id="editMoneyIn" type="text" placeholder="savings?...">
+                    <input id="editMoneyOut" type="text" placeholder="expense?...">
+                    <input id="editUserIdFk" type="number" readonly>
+                    <button id="updateCategoryBtn" type="button">Save</button><br>
+                </form> -->
+
+                <!-- Opens CREATE New Category row (hidden until "edit" button is clicked) -->
                 <form class="create-row hide">
                     <input id="catId" type="number" placeholder="Category ID">
                     <input id="catName" type="text" placeholder="Name">

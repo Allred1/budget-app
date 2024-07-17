@@ -22,6 +22,7 @@ async function findProfile() {
     const setLName = document.getElementById('setLName');
     const setUsername = document.getElementById('setUsername');
     const setPassword = document.getElementById('setPassword');
+    const setIncome = document.getElementById('setIncome');
 
     // Get the ID from Main, which received it from Login
     const userId = await window.electronAPI.renderersRetrieveLogin();
@@ -37,6 +38,7 @@ async function findProfile() {
     setLName.innerText = data.recordset[0].last_name;
     setUsername.innerText = data.recordset[0].username;
     setPassword.innerText = data.recordset[0].password;
+    setIncome.innerText = `$${data.recordset[0].income}`;
 };
 
 
@@ -73,6 +75,7 @@ async function openForm() {
     document.getElementById('editLName').value = data.recordset[0].last_name;
     document.getElementById('editUsername').value = data.recordset[0].username;
     document.getElementById('editPassword').value = data.recordset[0].password;
+    document.getElementById('editIncome').value = data.recordset[0].income;
 
     // On clicking the "save" button, 
     // Update the database with these values via Prelead -> Main -> dbOperation
@@ -94,9 +97,10 @@ async function submitNewProfile(display, edit) {
         const lName = document.getElementById('editLName').value;
         const username = document.getElementById('editUsername').value;
         const password = document.getElementById('editPassword').value;
+        const income = document.getElementById('editIncome').value;
 
         // Send the new data to be updated in the database
-        window.electronAPI.setNewProfile(userId, fName, lName, username, password);
+        window.electronAPI.setNewProfile(userId, fName, lName, username, password, income);
 
         // Hide the profile form and reveal the static profile display
         edit.classList.add('hide');
