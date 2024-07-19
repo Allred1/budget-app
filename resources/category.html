@@ -14,7 +14,7 @@
                 <a href="dashboard.html"><img src="../resources/images/dashboardIcon.png"></a>
                 <a href="profile.html"><img src="../resources/images/profileIcon.png"></a>
                 <a href="category.html"><img src="../resources/images/categoryIcon.png"></a>
-                <a href="login.html"><img src="../resources/images/logoutIcon.png"></a>
+                <button id="logoutBtn"><img src="../resources/images/logoutIcon.png"></button>
             </nav>
 
             <div class="header">
@@ -22,7 +22,7 @@
                     Welcome to Categories!
                 </div>
                 
-                <div class="cat-income-label">Income: &nbsp
+                <div class="cat-income-label">Monthly Income: &nbsp
                     <div id="cat-income"></div>
                 </div>
                 
@@ -38,7 +38,7 @@
                     <div>Savings?</div>
                     <div>Expense?</div>
                     <div>User Id</div>
-                    <button id="editBtn" type="buttone">Edit</button>
+                    <button id="editBtn" type="button">Edit</button>
                 </div>
 
                 <!-- Tax Category -->
@@ -67,7 +67,7 @@
 
                 <!-- Opens CREATE New Category row (hidden until "edit" button is clicked) -->
                 <form class="create-row hide">
-                    <input id="catId" type="number" placeholder="Category ID">
+                    <input id="catId" type="number" placeholder="Category ID" readonly>
                     <input id="catName" type="text" placeholder="Name">
                     <input id="dollarAmount" type="text" placeholder="Amount">
                     <input id="moneyIn" type="text" placeholder="Savings?">

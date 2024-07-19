@@ -8,6 +8,7 @@ window.onload = function() {
     findCategory();
     addFunctionalityToDeleteBtns();
     findTax();
+    logout();
 };
 
 
@@ -22,7 +23,7 @@ async function findIncome() {
     const userId = await window.electronAPI.renderersRetrieveLogin();
     // Ask the database for the income information via Preload -> Main -> dbOperation, and return it
     const data = await window.electronAPI.retrieveIncome(userId);
-    income.innerText = `$${data.recordset[0].income}`;
+    income.innerText = `$${(data.recordset[0].income).toFixed(2)}`;
     
     // Set the userId in the "create category" row as a non-changeable value
     document.getElementById('userIdFk').value = userId;
@@ -38,7 +39,9 @@ async function findTax() {
     const userId = await window.electronAPI.renderersRetrieveLogin();
     // Need user Id to find user's income from database
     const data = await window.electronAPI.retrieveIncome(userId);
-    const income = data.recordset[0].income
+    // Tax takes annual income, determines bracket, then calculates the tax on the monthly income.
+    const monthlyIncome = data.recordset[0].income
+    const annualIncome = monthlyIncome * 12;
 
     // Get column values for Tax
     const taxId = document.getElementById('taxId');
@@ -51,9 +54,9 @@ async function findTax() {
     // Utah State tax: 
     const stateTax = 0.0465; // percentage
     // Using the federal tax brackets, determine which one the user lies in
-    const bracket = determineTaxBracket(income);
+    const bracket = determineTaxBracket(annualIncome);
     // Calculate the total tax that must be paid
-    const totalTax = calculateFederalAndStateTax(income, bracket, stateTax);
+    const totalTax = calculateFederalAndStateTax(monthlyIncome, bracket, stateTax);
 
     // Populate the fields with data
     taxId.innerText = 3000;
@@ -218,6 +221,8 @@ let toggle = false;
 const editBtn = document.getElementById('editBtn');
 editBtn.addEventListener('click', (event) => {
     if (toggle == false) {
+        // Change button to say "close"
+        editBtn.innerText = 'Close';
         // When clicked, open the editing modal
         showCreateCategory();
         // Show the row editing ability
@@ -227,6 +232,8 @@ editBtn.addEventListener('click', (event) => {
         toggle = true;
     } else {
         // When clicked again, 
+        // Change button to say 'edit' again
+        editBtn.innerText = 'Edit';
         // Get HTML elements and swith the modal to be hidden
         const section = document.querySelector('.category-content');
         const edit = section.querySelector('.create-row');
@@ -252,8 +259,12 @@ async function showCreateCategory() {
     createCategoryBtn.addEventListener('click', (event) => {
         event.preventDefault();
         submitCategory(edit);
+        // Hide the row editing ability
+        hideRowEdits();
+        location.reload();
     });
 };
+
 
 
 // Takes the entered values and sends them to the database to be created as a new Category 
@@ -262,12 +273,11 @@ async function submitCategory(edit) {
     const userId = await window.electronAPI.renderersRetrieveLogin();
 
     // Take the user's entered values and send them to be created in the database
-    const categoryId = document.getElementById('catId').value;
     const name = document.getElementById('catName').value;
     const amount = document.getElementById('dollarAmount').value;
     const moneyIn = document.getElementById('moneyIn').value;
     const moneyOut = document.getElementById('moneyOut').value;
-    window.electronAPI.setCategory(categoryId, name, amount, moneyIn, moneyOut, userId);
+    window.electronAPI.setCategory(name, amount, moneyIn, moneyOut, userId);
 
     // Hide the create category modal again
     edit.classList.add('hide');
@@ -310,6 +320,8 @@ async function hideRowEdits() {
     deleteBtns.forEach(btn => {
         btn.classList.add('hide');
     });
+    // Change button to say 'edit' again
+    editBtn.innerText = 'Edit';
 };
 
 
@@ -380,4 +392,15 @@ async function deleteHtmlElements(i) {
     rowMoneyOut.remove();
     rowForeignKey.remove();
     rowDeleteBtn.remove();
+};
+
+
+
+// Logs out of account when user clicks logout button 
+async function logout() {
+    const logoutBtn = document.getElementById('logoutBtn');
+    logoutBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        window.electronAPI.tellMainLogout();
+    });
 };

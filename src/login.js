@@ -62,18 +62,20 @@ const createProfileBtn = document.getElementById('createProfileBtn');
 
 // When clicked, calls the function that submits the user input as a new profile
 // and navigates the user to the Dashboard page
-createProfileBtn.addEventListener('click', submitProfile);
 createProfileBtn.addEventListener('click', (event) => {
     event.stopPropagation();    // prevents event bubbling
+    submitProfile();
     window.location.href='dashboard.html';
 });
 
 // Takes the entered values and sends them to the database to be created as a new Profile
-function submitProfile() {
+async function submitProfile() {
     const userId = document.getElementById('profileId').value;
     const fName = document.getElementById('firstName').value;
     const lName = document.getElementById('lastName').value;
     const username = document.getElementById('username').value;
     const password = document.getElementById('profilePassword').value;
+    // Send the ID to Main process so all the ipcHandlers can use the ID
+    captureLoginId(userId);
     window.electronAPI.setProfile(userId, fName, lName, username, password);
 };

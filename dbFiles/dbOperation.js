@@ -18,18 +18,18 @@ const createProfile = async(profile) => {
     };
 };
 
+
 const createCategory = async(category) => {
     try {
         let pool = await sql.connect(config);
-        let newCategory = await pool.request().query(`INSERT INTO category VALUES (${category[0]}, '${category[1]}', '${category[2]}', '${category[3]}', '${category[4]}', '${category[5]}')`);
-        console.log('Category created.');
+        let newCategory = await pool.request().query(`INSERT INTO category (category_name, dollar_amount, money_in, money_out, profile_id_fk) VALUES ('${category[0]}', '${category[1]}', '${category[2]}', '${category[3]}', '${category[4]}')`);
+        console.log('New Test Category created.');
         return newCategory;
     }
     catch(error) {
         console.log(error);
     };
 };
-
 
 // ************************************************************
 // 'GET' FUNCTIONS

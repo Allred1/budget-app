@@ -12,8 +12,8 @@ const createWindow = () => {
 
     // Main window constructor
     const mainWindow = new BrowserWindow({
-        width: 1400, 
-        height: 600,
+        width: 1600, 
+        height: 800,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: true, 
@@ -22,13 +22,13 @@ const createWindow = () => {
         show: false,
     });
 
-    // Receive the UserID from the Login, then send it to the other renderer processes
-    ipcMain.handle('send-Main-userId', async(_event, userId) => {
-        // Send ID to the other Renderers (dashboard, profile, & category)
-        ipcMain.handle('sendIdToRenderers', async() => { return userId; });
-            // Error when logging out and logging in with a new login: "Erro: Attempted to register a second handler for 'sendIdToRenderers'"
-            // Idea: when I log out, I not only need to navigate out of the previous page and to the login page, but I also need to wipe the original userId to a blank string. 
-    });
+    // // Receive the UserID from the Login, then send it to the other renderer processes
+    // ipcMain.handle('send-Main-userId', async(_event, userId) => {
+    //     // Send ID to the other Renderers (dashboard, profile, & category)
+    //     ipcMain.handle('sendIdToRenderers', async() => { return userId; });
+    //         // Error when logging out and logging in with a new login: "Erro: Attempted to register a second handler for 'sendIdToRenderers'"
+    //         // Idea: when I log out, I not only need to navigate out of the previous page and to the login page, but I also need to wipe the original userId to a blank string. 
+    // });
     mainWindow.loadFile(loginHtmlPath);
     // mainWindow.maximize();
     mainWindow.show();
@@ -45,16 +45,30 @@ const createWindow = () => {
 
 
 // *************************************
+// ******* LOGIN HANDLERS *******
+// *************************************
+// Receive the UserID from the Login, then send it to the other renderer processes
+ipcMain.handle('send-Main-userId', async(_event, userId) => {
+    // Send ID to the other Renderers (dashboard, profile, & category)
+    ipcMain.handle('sendIdToRenderers', async() => { return userId; });
+        // Error when logging out and logging in with a new login: "Erro: Attempted to register a second handler for 'sendIdToRenderers'"
+        // Idea: when I log out, I not only need to navigate out of the previous page and to the login page, but I also need to wipe the original userId to a blank string. 
+});
+ipcMain.handle('logout', () => {
+    app.quit();
+});
+
+
+// *************************************
 // *******CREATE HANDLERS*******
 // *************************************
 // Calls the CreateProfile and CreateCategory functions interacting with the database
 ipcMain.handle('set-profile', async function setGoal(_event, value={userId, fName, lName, username, password}) {
     dbOperation.createProfile(value);
 });
-ipcMain.handle('set-category', async function setGoal(_event, value={catId, name, amount, moneyIn, moneyOut, userIdFk}) {
+ipcMain.handle('set-category', async function setGoal(_event, value={category_name, amount, moneyIn, moneyOut, userIdFk}) {
     dbOperation.createCategory(value);
 });
-
 
 // *************************************
 // *******GET HANDLERS*******

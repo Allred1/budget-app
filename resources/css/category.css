@@ -4,7 +4,7 @@
 .cat-income-label {
     display: flex;
     float: right;
-    width: 200px;
+    width: 300px;
     margin-right: 200px;
     font-size: 25px;
     align-items: center;
@@ -17,8 +17,9 @@
     padding: 5px;
     margin-left: 50px;
     margin-right: 100px;
-    border-style: solid;
+    /* border-style: solid;
     border-color: black;
+    background-color: rgb(34, 87, 122, 0.2); */
 }
 
 .spreadsheet-label, .create-row, .tax, .row {
@@ -30,8 +31,15 @@
     text-align: center;
 }
 
+.create-row {
+    border-style: solid;
+    border-width: thin;
+    background-color: rgb(34, 87, 122, 0.2);
+}
+
 .spreadsheet-label {
-    background-color: darkgray;
+    /* background-color: darkgray; */
+    background-color: #ffbf66;
 }
 #editBtn {
     grid-column: 7;
@@ -42,8 +50,13 @@
 .tax {
     border-style: solid;
     border-color: black;
-    background-color: rgb(96, 165, 96);
+    /* background-color: rgb(96, 165, 96); */
+    background-color: rgb(145, 191, 145);
     color: white;
+}
+
+.category-row {
+    background-color: white;
 }
 
 .row {
@@ -54,6 +67,7 @@
 
 .updateButtons, .deleteButtons {
     grid-column: 7;
+    height: 25px;
 }
 
 

@@ -11,13 +11,14 @@
 /* Profile form */
 .profile-box {
     padding: 30px 10px 50px 10px;
-    background-color: rgb(169, 169, 169);
+    /* background-color: rgb(169, 169, 169); */
+    background-color: rgb(34, 87, 122, 0.2);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
     width: 30%;
     margin-left: 25px;
-}
-.profile-box h4 {
-    font-size: 20px;
-    margin-top: -10px;
+    border-style: solid;
+    border-width: thin;
+    border-color: black;
 }
 
 .profile-display, .profile-edit {

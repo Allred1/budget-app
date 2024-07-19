@@ -14,23 +14,16 @@
                 <a href="dashboard.html"><img src="../resources/images/dashboardIcon.png"></a>
                 <a href="profile.html"><img src="../resources/images/profileIcon.png"></a>
                 <a href="category.html"><img src="../resources/images/categoryIcon.png"></a>
-                <a href="login.html"><img src="../resources/images/logoutIcon.png"></a>
-                <script src="plotly-2.32.0.min.js" charset="utf-8"></script>
+                <button id="logoutBtn"><img src="../resources/images/logoutIcon.png"></button>
             </nav>
 
             <div class="header">
                 <div class="greeting">
-                    Welcome to the Temp Dashboard!
+                    Welcome to the Dashboard!
                 </div>
-                <div class="view">
-                    Monthly
-                </div>
-                <div class="view">
-                    Biweekly
-                </div>
-                <div class="view">
-                    Weekly
-                </div>
+                <button id="monthlyBtn" type="button" class="view">Monthly</button>
+                <button id="biweeklyBtn" type="button" class="view">Biweekly</button>
+                <button id="weeklyBtn" type="button" class="view">Weekly</button>
             </div>
 
 
@@ -39,13 +32,12 @@
                 <div class="overview">
                     
                     <div class="income-display">
-                        <label class="incomeLabel">Income: &nbsp</label>
+                        <label class="incomeLabel">Monthly Income: &nbsp</label>
                         <p id="income"></p>
                     </div>
 
                     <div class="pie-chart">
-                        <!-- <p>Pie Chart</p> -->
-                         <div id="tester" style="width: 60px; height: 25px;"></div>
+                        <p>Pie Chart</p>
                     </div>
                     <div class="legend-grid">
                         <div class="legend" class="cat1">
@@ -71,44 +63,46 @@
 
                 <div class="main-balances">
 
+                    <p id="amountLabel">Monthly</p>
+
                     <div id="card" class="card">
                         <div id="card1" class="card-container">
-                            <p id="catName1"></p>
-                            <p id="amount1"></p>
-                            <p id="moneyIn1"></p>
-                            <p id="moneyOut1"></p>
+                            <p id="catName1" class="catName">Savings</p>
+                            <p id="amount1" class="catAmount">$300.00</p>
+                            <p id="moneyIn1" class="moneyIn">Yes</p>
+                            <p id="moneyOut1" class="moneyOut">No</p>
                         </div>
                     </div>
                     <div id="card" class="card">
                         <div id="card2" class="card-container">
-                            <p id="catName2"></p>
-                            <p id="amount2"></p>
-                            <p id="moneyIn2"></p>
-                            <p id="moneyOut2"></p>
+                            <p id="catName2" class="catName"></p>
+                            <p id="amount2" class="catAmount"></p>
+                            <p id="moneyIn2" class="moneyIn"></p>
+                            <p id="moneyOut2" class="moneyOut"></p>
                         </div>
                     </div>
                     <div id="card" class="card">
                         <div id="card3" class="card-container">
-                            <p id="catName3"></p>
-                            <p id="amount3"></p>
-                            <p id="moneyIn3"></p>
-                            <p id="moneyOut3"></p>
+                            <p id="catName3" class="catName"></p>
+                            <p id="amount3" class="catAmount"></p>
+                            <p id="moneyIn3" class="moneyIn"></p>
+                            <p id="moneyOut3" class="moneyOut"></p>
                         </div>
                     </div>
                     <div id="card" class="card">
                         <div id="card4" class="card-container">
-                            <p id="catName4"></p>
-                            <p id="amount4"></p>
-                            <p id="moneyIn4"></p>
-                            <p id="moneyOut4"></p>
+                            <p id="catName4" class="catName"></p>
+                            <p id="amount4" class="catAmount"></p>
+                            <p id="moneyIn4" class="moneyIn"></p>
+                            <p id="moneyOut4" class="moneyOut"></p>
                         </div>
                     </div>
                     <div id="card" class="card">
                         <div id="card5" class="card-container">
-                            <p id="catName5"></p>
-                            <p id="amount5"></p>
-                            <p id="moneyIn5"></p>
-                            <p id="moneyOut5"></p>
+                            <p id="catName5" class="catName"></p>
+                            <p id="amount5" class="catAmount"></p>
+                            <p id="moneyIn5" class="moneyIn"></p>
+                            <p id="moneyOut5" class="moneyOut"></p>
                         </div>
                     </div>
                 </div>
@@ -120,12 +114,5 @@
         </div>
 
         <script src="../src/dashboard.js"></script>
-        <script>
-            TESTER = document.getElementById('tester');
-            Plotly.newPlot( TESTER, [{
-                x: [1,2,3,4,5],
-                y: [1,2,4,8,16], }], {
-                margin: { t: 0 } } );
-        </script>
     </body>
 </html>

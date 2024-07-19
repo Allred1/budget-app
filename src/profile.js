@@ -6,6 +6,7 @@
 // Call the function on page load
 window.onload = function() {
     findProfile();
+    logout();
 };
 
 
@@ -38,7 +39,7 @@ async function findProfile() {
     setLName.innerText = data.recordset[0].last_name;
     setUsername.innerText = data.recordset[0].username;
     setPassword.innerText = data.recordset[0].password;
-    setIncome.innerText = `$${data.recordset[0].income}`;
+    setIncome.innerText = `$${(data.recordset[0].income).toFixed(2)}`;
 };
 
 
@@ -83,6 +84,7 @@ async function openForm() {
     saveProfileBtn.addEventListener('click', (event) => {
         event.preventDefault();
         submitNewProfile(display, edit);
+        location.reload();
     });
 };
 
@@ -110,4 +112,14 @@ async function submitNewProfile(display, edit) {
         edit.classList.add('hide');
         display.classList.remove('hide');
     };
+};
+
+
+// Logs out of account when user clicks logout button 
+async function logout() {
+    const logoutBtn = document.getElementById('logoutBtn');
+    logoutBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        window.electronAPI.tellMainLogout();
+    });
 };
