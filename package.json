@@ -14,7 +14,7 @@
     "electron": "^31.1.0"
   },
   "dependencies": {
-    "express": "^4.19.2",
+    "express": "^4.21.2",
     "jquery": "^3.7.1",
     "msnodesqlv8": "^4.2.1",
     "mssql": "^11.0.0",
