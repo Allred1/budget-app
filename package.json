@@ -11,7 +11,7 @@
   "author": "Chase Allred",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^31.1.0"
+    "electron": "^35.7.5"
   },
   "dependencies": {
     "express": "^4.21.2",
